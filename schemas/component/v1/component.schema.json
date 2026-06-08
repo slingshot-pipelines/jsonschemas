@@ -1,16 +1,152 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/component/v1/component.schema.json",
-    "title": "Component",
-    "description": "A component of a project",
-    "type": "object",
-    "required": ["project"],
-    "properties": {
-      "project": {
-        "type": "string",
-        "description": "The project name. This should typically match the repository name."
-      }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/component/v1/component.schema.json",
+  "title": "Component",
+  "description": "A component of a project",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/github-action"
+    },
+    {
+      "$ref": "#/$defs/terragrunt-infra"
+    },
+    {
+      "$ref": "#/$defs/json-schemas"
+    },
+    {
+      "$ref": "#/$defs/lambda"
+    }
+  ],
+  "$defs": {
+    "globals": {
+      "title": "Global component fields",
+      "type": "object",
+      "required": [ "component" ],
+      "properties": {
+        "component": {
+          "description": "The name of the component",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "single-dir": {
+      "title": "A component with a single root",
+      "type": "object",
+      "required": [ "path" ],
+      "properties": {
+        "path": {
+          "description": "The path of the component",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "github-action": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type", "source-language" ],
+          "properties": {
+            "type": {
+              "const": "github-action"
+            },
+            "source-language": {
+              "enum": [ "composite", "node", "docker" ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "terragrunt-infra": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type" ],
+          "properties": {
+            "type": {
+              "const": "terragrunt-infra"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "json-schemas": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type" ],
+          "properties": {
+            "type": {
+              "const": "json-schemas"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "lambda": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type", "language", "subpaths" ],
+          "properties": {
+            "type": {
+              "const": "lambda"
+            },
+            "language": {
+              "enum": [ "go", "node" ]
+            },
+            "subpaths": {
+              "type": "object",
+              "required": [ "src", "build", "infra" ],
+              "properties": {
+                "src": {
+                  "description": "The path to the Lambda source code",
+                  "type": "string"
+                },
+                "build": {
+                  "description": "The path for the compiled executable",
+                  "type": "string"
+                },
+                "infra": {
+                  "description": "The path to the Lambda infrastructure",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
     }
   }
-  
-  
+}
