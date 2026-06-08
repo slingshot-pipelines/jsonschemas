@@ -1,8 +1,10 @@
 SHELL := bash
 
+MAKE_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+
 .PHONY: lint
 lint:
-	@jsonschema lint schemas \
+	@jsonschema lint $(MAKE_DIR)/schemas \
 		-x unnecessary_allof_ref_wrapper_modern \
 		-x unnecessary_allof_wrapper \
 		-x simple_properties_identifiers \
@@ -10,4 +12,4 @@ lint:
 
 .PHONY: fmt
 fmt:
-	@jsonschema fmt schemas
+	@jsonschema fmt $(MAKE_DIR)/schemas
