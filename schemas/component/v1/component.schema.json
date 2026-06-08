@@ -12,10 +12,16 @@
       "$ref": "#/$defs/terragrunt-infra"
     },
     {
+      "$ref": "#/$defs/terraform-modules"
+    },
+    {
       "$ref": "#/$defs/json-schemas"
     },
     {
       "$ref": "#/$defs/lambda"
+    },
+    {
+      "$ref": "#/$defs/s3-website"
     }
   ],
   "$defs": {
@@ -142,6 +148,46 @@
                 }
               },
               "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "terraform-modules": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type" ],
+          "properties": {
+            "type": {
+              "const": "terraform-modules"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "s3-website": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type" ],
+          "properties": {
+            "type": {
+              "const": "s3-website"
             }
           },
           "additionalProperties": false
