@@ -57,7 +57,7 @@ jobs:
     uses: slingshot-pipelines/workflows/.github/workflows/check-json-schemas.yml@check-jsonschemas-workflow
     strategy:
       matrix:
-        COMPONENT: ${{ fromJSON(needs.detect-changes.outputs.changed-components-by-type).github-action }}
+        COMPONENT: ${{ fromJSON(needs.detect-changes.outputs.changed-components-by-type).json-schemas }}
     with:
       COMPONENT: ${{ matrix.COMPONENT }}
     secrets: inherit
