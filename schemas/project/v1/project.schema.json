@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/project/v1/project.schema.json",
+  "title": "Project",
+  "description": "A project in a Slingshot Pipeline",
+  "examples": [
+    {
+      "project": "jsonschemas",
+      "description": "A collection of JSON schemas"
+    }
+  ],
+  "type": "object",
+  "required": [ "project" ],
+  "properties": {
+    "project": {
+      "description": "The project name. This should typically match the repository name",
+      "type": "string"
+    },
+    "description": {
+      "description": "An optional description of the project",
+      "type": "string"
+    }
+  }
+}

@@ -50,11 +50,11 @@ jobs:
       COMPONENT: ${{ matrix.COMPONENT }}
     secrets: inherit
 
-  check-github-action:
+  check-json-schemas:
     needs:
       - detect-changes
-    if: ${{ contains(needs.detect-changes.outputs.changed-component-types, '"github-action"') }}
-    uses: slingshot-pipelines/workflows/.github/workflows/check-github-action.yml@check-github-action/v0
+    if: ${{ contains(needs.detect-changes.outputs.changed-component-types, '"json-schemas"') }}
+    uses: slingshot-pipelines/workflows/.github/workflows/check-json-schemas.yml@check-jsonschemas-workflow
     strategy:
       matrix:
         COMPONENT: ${{ fromJSON(needs.detect-changes.outputs.changed-components-by-type).github-action }}
@@ -67,7 +67,7 @@ jobs:
       - detect-changes
       - check-components
       - check-github-workflows
-      - check-github-action
+      - check-json-schemas
     runs-on: ubuntu-latest
     if: ${{ always() }}
     steps:

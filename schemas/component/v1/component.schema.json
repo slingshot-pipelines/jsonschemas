@@ -1,0 +1,16 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/component/v1/component.schema.json",
+    "title": "Component",
+    "description": "A component of a project",
+    "type": "object",
+    "required": ["project"],
+    "properties": {
+      "project": {
+        "type": "string",
+        "description": "The project name. This should typically match the repository name."
+      }
+    }
+  }
+  
+  
