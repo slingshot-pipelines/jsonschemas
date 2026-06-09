@@ -4,7 +4,93 @@
   "title": "Component",
   "description": "A component of a project",
   "type": "object",
-  "required": [ "type", "component" ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "github-action"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/github-action.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "json-schemas"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/json-schemas.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "lambda"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/lambda.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "library"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/library.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "s3-website"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/s3-website.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "terraform-modules"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terraform-modules.schema.json"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "terragrunt-infra"
+          }
+        }
+      },
+      "then": {
+        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terragrunt-infra.schema.json"
+      }
+    }
+  ],
+  "required": [ "type", "component", "path" ],
   "properties": {
     "type": {
       "enum": [
@@ -19,6 +105,10 @@
     },
     "component": {
       "description": "The name of the component",
+      "type": "string"
+    },
+    "path": {
+      "description": "The path to the component",
       "type": "string"
     }
   }
