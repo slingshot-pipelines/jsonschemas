@@ -4,10 +4,16 @@
   "title": "GitHub Action component",
   "description": "A GitHub Action component of a project",
   "type": "object",
-  "required": [ "type", "source-language" ],
+  "required": [ "type", "component", "path", "source-language" ],
   "properties": {
     "type": {
       "const": "github-action"
+    },
+    "component": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/component.schema.json"
+    },
+    "path": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     },
     "source-language": {
       "enum": [ "composite", "node", "docker" ]
