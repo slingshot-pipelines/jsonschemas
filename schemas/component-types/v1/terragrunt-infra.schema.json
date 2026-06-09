@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/terragrunt-infra.schema.json",
+  "title": "Terragrunt Infrastructure component",
+  "description": "A Terragrunt infrastructure component of a project",
+  "type": "object",
+  "required": [ "type" ],
+  "properties": {
+    "type": {
+      "const": "terragrunt-infra"
+    },
+    "deployments": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/deployments.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

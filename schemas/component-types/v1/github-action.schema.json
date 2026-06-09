@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/github-action.schema.json",
+  "title": "GitHub Action component",
+  "description": "A GitHub Action component of a project",
+  "type": "object",
+  "required": [ "type", "source-language" ],
+  "properties": {
+    "type": {
+      "const": "github-action"
+    },
+    "source-language": {
+      "enum": [ "composite", "node", "docker" ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/library.schema.json",
+  "title": "Library component",
+  "description": "A library component of a project",
+  "type": "object",
+  "required": [ "type", "source-language" ],
+  "properties": {
+    "type": {
+      "const": "library"
+    },
+    "source-language": {
+      "enum": [ "go", "node" ]
+    }
+  },
+  "additionalProperties": false
+}
