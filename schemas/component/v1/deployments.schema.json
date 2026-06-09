@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/deployments.schema.json",
+  "title": "Deployments Config",
+  "description": "A deployments configuration, for a component",
+  "type": "object",
+  "required": [ "environments", "sequence" ],
+  "properties": {
+    "environments": {
+      "description": "A map of environments, currently no fields are supported for environments",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "sequence": {
+      "title": "Deployment sequence",
+      "description": "The series of steps the deployment pipeline should follow. Each step will trigger the next",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [ "environment" ],
+        "properties": {
+          "environment": {
+            "description": "The environment which should be deployed to during this step",
+            "type": "string"
+          },
+          "release-type": {
+            "description": "If specified, this parameter determines the type of release that will be created during this step",
+            "enum": [ "release", "prerelease" ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

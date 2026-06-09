@@ -7,7 +7,6 @@
   "required": [ "type", "component" ],
   "properties": {
     "type": {
-      "type": "string",
       "enum": [
         "github-action",
         "json-schemas",
