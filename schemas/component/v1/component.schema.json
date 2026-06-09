@@ -14,7 +14,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/github-action.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/github-action.schema.json"
+          }
+        }
       }
     },
     {
@@ -26,7 +30,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/json-schemas.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/json-schemas.schema.json"
+          }
+        }
       }
     },
     {
@@ -38,7 +46,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/lambda.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/lambda.schema.json"
+          }
+        }
       }
     },
     {
@@ -50,7 +62,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/library.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/library.schema.json"
+          }
+        }
       }
     },
     {
@@ -62,7 +78,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/s3-website.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/s3-website.schema.json"
+          }
+        }
       }
     },
     {
@@ -74,7 +94,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terraform-modules.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terraform-modules.schema.json"
+          }
+        }
       }
     },
     {
@@ -86,7 +110,11 @@
         }
       },
       "then": {
-        "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terragrunt-infra.schema.json"
+        "dependentSchemas": {
+          "type": {
+            "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component-types/v1/terragrunt-infra.schema.json"
+          }
+        }
       }
     }
   ],
