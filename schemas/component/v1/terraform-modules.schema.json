@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/terraform-modules.schema.json",
+  "title": "Terraform Modules component",
+  "description": "A Terraform modules component of a project",
+  "type": "object",
+  "required": [ "component", "type", "path" ],
+  "properties": {
+    "type": {
+      "const": "terraform-modules"
+    },
+    "component": {
+      "description": "The name of the component",
+      "type": "string"
+    },
+    "path": {
+      "description": "The path of the component",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

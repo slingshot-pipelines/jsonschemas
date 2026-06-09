@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/project/v1/project.schema.json",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/project/v1/project.schema.json",
   "title": "Project",
   "description": "A project in a Slingshot Pipeline",
   "examples": [

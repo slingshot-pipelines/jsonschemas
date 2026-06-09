@@ -1,166 +1,25 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/slingshot-pipelines/jsonschemas/blob/main/schemas/component/v1/component.schema.json",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/component.schema.json",
   "title": "Component",
   "description": "A component of a project",
   "type": "object",
-  "oneOf": [
-    {
-      "title": "GitHub Action",
-      "type": "object",
-      "required": [ "component", "type", "path", "source-language" ],
-      "properties": {
-        "type": {
-          "const": "github-action"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        },
-        "source-language": {
-          "enum": [ "composite", "node", "docker" ]
-        }
-      },
-      "additionalProperties": false
+  "required": [ "type", "component" ],
+  "properties": {
+    "type": {
+      "type": "string"
     },
-    {
-      "title": "Terragrunt Infrastructure",
-      "type": "object",
-      "required": [ "component", "type", "path" ],
-      "properties": {
-        "type": {
-          "const": "terragrunt-infra"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "title": "JSON Schemas",
-      "type": "object",
-      "required": [ "component", "type", "path" ],
-      "properties": {
-        "type": {
-          "const": "json-schemas"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "title": "Lambda",
-      "type": "object",
-      "required": [ "component", "type", "path", "subpaths", "source-language" ],
-      "properties": {
-        "type": {
-          "const": "lambda"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        },
-        "source-language": {
-          "enum": [ "go", "node" ]
-        },
-        "subpaths": {
-          "type": "object",
-          "required": [ "src", "build", "infra" ],
-          "properties": {
-            "src": {
-              "description": "The path to the Lambda source code",
-              "type": "string"
-            },
-            "build": {
-              "description": "The path for the compiled executable",
-              "type": "string"
-            },
-            "infra": {
-              "description": "The path to the Lambda infrastructure",
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "title": "Terraform Modules",
-      "type": "object",
-      "required": [ "component", "type", "path" ],
-      "properties": {
-        "type": {
-          "const": "terraform-modules"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "title": "S3 Website",
-      "type": "object",
-      "required": [ "component", "type", "path" ],
-      "properties": {
-        "type": {
-          "const": "s3-website"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        }
-      },
-      "additionalProperties": false
-    },
-    {
-      "title": "Library",
-      "type": "object",
-      "required": [ "component", "type", "path", "source-language" ],
-      "properties": {
-        "type": {
-          "const": "github-action"
-        },
-        "component": {
-          "$ref": "#/$defs/component"
-        },
-        "path": {
-          "$ref": "#/$defs/path"
-        },
-        "source-language": {
-          "enum": [ "go", "node" ]
-        }
-      },
-      "additionalProperties": false
-    }
-  ],
-  "$defs": {
     "component": {
       "description": "The name of the component",
-      "type": "string"
-    },
-    "path": {
-      "description": "The path of the component",
-      "type": "string"
+      "enum": [
+        "github-action",
+        "json-schemas",
+        "lambda",
+        "library",
+        "s3-website",
+        "terraform-modules",
+        "terragrunt-infra"
+      ]
     }
   }
 }

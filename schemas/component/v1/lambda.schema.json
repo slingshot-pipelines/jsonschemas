@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/lambda.schema.json",
+  "title": "Lambda component",
+  "description": "A Lambda component of a project",
+  "type": "object",
+  "required": [ "component", "type", "path", "subpaths", "source-language" ],
+  "properties": {
+    "type": {
+      "const": "lambda"
+    },
+    "component": {
+      "description": "The name of the component",
+      "type": "string"
+    },
+    "path": {
+      "description": "The path of the component",
+      "type": "string"
+    },
+    "source-language": {
+      "enum": [ "go", "node" ]
+    },
+    "subpaths": {
+      "type": "object",
+      "required": [ "src", "build", "infra" ],
+      "properties": {
+        "src": {
+          "description": "The path to the Lambda source code",
+          "type": "string"
+        },
+        "build": {
+          "description": "The path for the compiled executable",
+          "type": "string"
+        },
+        "infra": {
+          "description": "The path to the Lambda infrastructure",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
