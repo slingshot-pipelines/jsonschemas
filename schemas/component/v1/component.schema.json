@@ -22,6 +22,9 @@
     },
     {
       "$ref": "#/$defs/s3-website"
+    },
+    {
+      "$ref": "#/$defs/library"
     }
   ],
   "$defs": {
@@ -122,12 +125,12 @@
         },
         {
           "type": "object",
-          "required": [ "type", "language", "subpaths" ],
+          "required": [ "type", "source-language", "subpaths" ],
           "properties": {
             "type": {
               "const": "lambda"
             },
-            "language": {
+            "source-language": {
               "enum": [ "go", "node" ]
             },
             "subpaths": {
@@ -188,6 +191,29 @@
           "properties": {
             "type": {
               "const": "s3-website"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "library": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/globals"
+        },
+        {
+          "$ref": "#/$defs/single-dir"
+        },
+        {
+          "type": "object",
+          "required": [ "type", "source-language" ],
+          "properties": {
+            "type": {
+              "const": "library"
+            },
+            "source-language": {
+              "enum": [ "go", "node" ]
             }
           },
           "additionalProperties": false
