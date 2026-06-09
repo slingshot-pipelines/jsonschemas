@@ -7,10 +7,7 @@
   "required": [ "type", "component" ],
   "properties": {
     "type": {
-      "type": "string"
-    },
-    "component": {
-      "description": "The name of the component",
+      "type": "string",
       "enum": [
         "github-action",
         "json-schemas",
@@ -20,6 +17,10 @@
         "terraform-modules",
         "terragrunt-infra"
       ]
+    },
+    "component": {
+      "description": "The name of the component",
+      "type": "string"
     }
   }
 }
