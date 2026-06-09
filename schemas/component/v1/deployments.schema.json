@@ -25,10 +25,6 @@
           "environment": {
             "description": "The environment which should be deployed to during this step",
             "type": "string"
-          },
-          "release-type": {
-            "description": "If specified, this parameter determines the type of release that will be created during this step",
-            "enum": [ "release", "prerelease" ]
           }
         },
         "additionalProperties": false

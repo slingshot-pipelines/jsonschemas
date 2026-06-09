@@ -8,8 +8,10 @@ lint:
 		-x unnecessary_allof_ref_wrapper_modern \
 		-x unnecessary_allof_wrapper \
 		-x simple_properties_identifiers \
-		-x top_level_examples
+		-x top_level_examples \
+		--http
 
 .PHONY: fmt
 fmt:
-	@jsonschema fmt $(MAKE_DIR)/schemas
+	@jsonschema fmt $(MAKE_DIR)/schemas \
+		--http
