@@ -25,6 +25,10 @@
           "environment": {
             "description": "The environment which should be deployed to during this step",
             "type": "string"
+          },
+          "manual": {
+            "description": "If true, deployment to the next environment will not be triggered automatically",
+            "type": "boolean"
           }
         },
         "additionalProperties": false
