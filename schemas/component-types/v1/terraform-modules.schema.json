@@ -4,10 +4,16 @@
   "title": "Terraform Modules component",
   "description": "A Terraform modules component of a project",
   "type": "object",
-  "required": [ "type" ],
+  "required": [ "type", "component", "path" ],
   "properties": {
     "type": {
       "const": "terraform-modules"
+    },
+    "component": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/component.schema.json"
+    },
+    "path": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     }
   }
 }

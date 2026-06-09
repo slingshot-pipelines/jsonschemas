@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json",
+  "title": "Component path",
+  "description": "The path of the component",
+  "type": "string"
+}

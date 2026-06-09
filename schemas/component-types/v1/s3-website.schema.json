@@ -4,13 +4,19 @@
   "title": "S3 Website component",
   "description": "An S3 website component of a project",
   "type": "object",
-  "required": [ "type" ],
+  "required": [ "type", "component", "path" ],
   "properties": {
     "type": {
       "const": "s3-website"
     },
+    "component": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/component.schema.json"
+    },
+    "path": {
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
+    },
     "deployments": {
-      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/component/v1/deployments.schema.json"
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/deployments.schema.json"
     }
   }
 }
