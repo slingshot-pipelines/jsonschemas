@@ -104,12 +104,10 @@
       ]
     },
     "component": {
-      "description": "The name of the component",
-      "type": "string"
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/component.schema.json"
     },
     "path": {
-      "description": "The path to the component",
-      "type": "string"
+      "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     }
   },
   "additionalProperties": false
