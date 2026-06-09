@@ -37,8 +37,7 @@
           "description": "The name of the component",
           "type": "string"
         }
-      },
-      "additionalProperties": false
+      }
     },
     "single-dir": {
       "title": "A component with a single root",
@@ -49,8 +48,7 @@
           "description": "The path of the component",
           "type": "string"
         }
-      },
-      "additionalProperties": false
+      }
     },
     "github-action": {
       "allOf": [
@@ -70,10 +68,10 @@
             "source-language": {
               "enum": [ "composite", "node", "docker" ]
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "terragrunt-infra": {
       "allOf": [
@@ -90,10 +88,10 @@
             "type": {
               "const": "terragrunt-infra"
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "json-schemas": {
       "allOf": [
@@ -110,10 +108,10 @@
             "type": {
               "const": "json-schemas"
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "lambda": {
       "allOf": [
@@ -152,10 +150,10 @@
               },
               "additionalProperties": false
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "terraform-modules": {
       "allOf": [
@@ -172,10 +170,10 @@
             "type": {
               "const": "terraform-modules"
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "s3-website": {
       "allOf": [
@@ -192,10 +190,10 @@
             "type": {
               "const": "s3-website"
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "library": {
       "allOf": [
@@ -215,10 +213,10 @@
             "source-language": {
               "enum": [ "go", "node" ]
             }
-          },
-          "additionalProperties": false
+          }
         }
-      ]
+      ],
+      "additionalProperties": false
     }
   }
 }
