@@ -9,6 +9,5 @@
     "type": {
       "const": "terraform-modules"
     }
-  },
-  "additionalProperties": false
+  }
 }

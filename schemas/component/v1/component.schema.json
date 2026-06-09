@@ -111,5 +111,6 @@
       "description": "The path to the component",
       "type": "string"
     }
-  }
+  },
+  "additionalProperties": false
 }
