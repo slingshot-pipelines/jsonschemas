@@ -6,217 +6,161 @@
   "type": "object",
   "oneOf": [
     {
-      "$ref": "#/$defs/github-action"
+      "title": "GitHub Action",
+      "type": "object",
+      "required": [ "component", "type", "path", "source-language" ],
+      "properties": {
+        "type": {
+          "const": "github-action"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "source-language": {
+          "enum": [ "composite", "node", "docker" ]
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/terragrunt-infra"
+      "title": "Terragrunt Infrastructure",
+      "type": "object",
+      "required": [ "component", "type", "path" ],
+      "properties": {
+        "type": {
+          "const": "terragrunt-infra"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/terraform-modules"
+      "title": "JSON Schemas",
+      "type": "object",
+      "required": [ "component", "type", "path" ],
+      "properties": {
+        "type": {
+          "const": "json-schemas"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/json-schemas"
+      "title": "Lambda",
+      "type": "object",
+      "required": [ "component", "type", "path", "subpaths", "source-language" ],
+      "properties": {
+        "type": {
+          "const": "lambda"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "source-language": {
+          "enum": [ "go", "node" ]
+        },
+        "subpaths": {
+          "type": "object",
+          "required": [ "src", "build", "infra" ],
+          "properties": {
+            "src": {
+              "description": "The path to the Lambda source code",
+              "type": "string"
+            },
+            "build": {
+              "description": "The path for the compiled executable",
+              "type": "string"
+            },
+            "infra": {
+              "description": "The path to the Lambda infrastructure",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/lambda"
+      "title": "Terraform Modules",
+      "type": "object",
+      "required": [ "component", "type", "path" ],
+      "properties": {
+        "type": {
+          "const": "terraform-modules"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/s3-website"
+      "title": "S3 Website",
+      "type": "object",
+      "required": [ "component", "type", "path" ],
+      "properties": {
+        "type": {
+          "const": "s3-website"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        }
+      },
+      "additionalProperties": false
     },
     {
-      "$ref": "#/$defs/library"
+      "title": "Library",
+      "type": "object",
+      "required": [ "component", "type", "path", "source-language" ],
+      "properties": {
+        "type": {
+          "const": "github-action"
+        },
+        "component": {
+          "$ref": "#/$defs/component"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "source-language": {
+          "enum": [ "go", "node" ]
+        }
+      },
+      "additionalProperties": false
     }
   ],
   "$defs": {
-    "globals": {
-      "title": "Global component fields",
-      "type": "object",
-      "required": [ "component" ],
-      "properties": {
-        "component": {
-          "description": "The name of the component",
-          "type": "string"
-        }
-      }
+    "component": {
+      "description": "The name of the component",
+      "type": "string"
     },
-    "single-dir": {
-      "title": "A component with a single root",
-      "type": "object",
-      "required": [ "path" ],
-      "properties": {
-        "path": {
-          "description": "The path of the component",
-          "type": "string"
-        }
-      }
-    },
-    "github-action": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type", "source-language" ],
-          "properties": {
-            "type": {
-              "const": "github-action"
-            },
-            "source-language": {
-              "enum": [ "composite", "node", "docker" ]
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "terragrunt-infra": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type" ],
-          "properties": {
-            "type": {
-              "const": "terragrunt-infra"
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "json-schemas": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type" ],
-          "properties": {
-            "type": {
-              "const": "json-schemas"
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "lambda": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type", "source-language", "subpaths" ],
-          "properties": {
-            "type": {
-              "const": "lambda"
-            },
-            "source-language": {
-              "enum": [ "go", "node" ]
-            },
-            "subpaths": {
-              "type": "object",
-              "required": [ "src", "build", "infra" ],
-              "properties": {
-                "src": {
-                  "description": "The path to the Lambda source code",
-                  "type": "string"
-                },
-                "build": {
-                  "description": "The path for the compiled executable",
-                  "type": "string"
-                },
-                "infra": {
-                  "description": "The path to the Lambda infrastructure",
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "terraform-modules": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type" ],
-          "properties": {
-            "type": {
-              "const": "terraform-modules"
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "s3-website": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type" ],
-          "properties": {
-            "type": {
-              "const": "s3-website"
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
-    },
-    "library": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/globals"
-        },
-        {
-          "$ref": "#/$defs/single-dir"
-        },
-        {
-          "type": "object",
-          "required": [ "type", "source-language" ],
-          "properties": {
-            "type": {
-              "const": "library"
-            },
-            "source-language": {
-              "enum": [ "go", "node" ]
-            }
-          }
-        }
-      ],
-      "additionalProperties": false
+    "path": {
+      "description": "The path of the component",
+      "type": "string"
     }
   }
 }
