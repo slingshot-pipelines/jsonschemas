@@ -109,6 +109,5 @@
     "path": {
       "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     }
-  },
-  "additionalProperties": false
+  }
 }

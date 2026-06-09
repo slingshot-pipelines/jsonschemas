@@ -40,5 +40,6 @@
     "deployments": {
       "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/deployments.schema.json"
     }
-  }
+  },
+  "additionalProperties": false
 }

@@ -18,5 +18,6 @@
     "source-language": {
       "enum": [ "go", "node" ]
     }
-  }
+  },
+  "additionalProperties": false
 }

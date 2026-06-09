@@ -18,5 +18,6 @@
     "source-language": {
       "enum": [ "composite", "node", "docker" ]
     }
-  }
+  },
+  "additionalProperties": false
 }
