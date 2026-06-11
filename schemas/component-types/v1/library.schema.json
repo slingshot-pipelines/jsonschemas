@@ -4,7 +4,7 @@
   "title": "Library component",
   "description": "A library component of a project",
   "type": "object",
-  "required": [ "type", "component", "path", "source-language" ],
+  "required": [ "type", "component", "path", "source-language", "tag-prefix" ],
   "properties": {
     "type": {
       "const": "library"
@@ -17,6 +17,10 @@
     },
     "source-language": {
       "enum": [ "go", "node" ]
+    },
+    "tag-prefix": {
+      "description": "Semver tags will be prefixed with this value. For example, if tag-prefix=v, the 0.0.0 tag will be v0.0.0",
+      "type": "string"
     }
   },
   "additionalProperties": false
