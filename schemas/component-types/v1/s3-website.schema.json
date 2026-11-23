@@ -15,6 +15,26 @@
     "path": {
       "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     },
+    "subpaths": {
+      "description": "Optional layout of the website within the component path. When omitted, the source is the component path, the build output is dist, and there is no infrastructure",
+      "type": "object",
+      "required": [ "src", "build", "infra" ],
+      "properties": {
+        "src": {
+          "description": "The path to the website source code",
+          "type": "string"
+        },
+        "build": {
+          "description": "The path for the built website files that are uploaded to the bucket",
+          "type": "string"
+        },
+        "infra": {
+          "description": "The path to the website infrastructure",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
     "deployments": {
       "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/deployments.schema.json"
     }
