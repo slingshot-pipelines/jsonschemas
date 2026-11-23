@@ -16,7 +16,7 @@
       "$ref": "https://raw.githubusercontent.com/slingshot-pipelines/jsonschemas/main/schemas/fields/v1/path.schema.json"
     },
     "subpaths": {
-      "description": "Optional layout of the website within the component path. When omitted, the source is the component path, the build output is dist, and there is no infrastructure.",
+      "description": "Optional layout of the website within the component path. When omitted, the source is the component path, the build output is dist, and there is no infrastructure",
       "type": "object",
       "required": [ "src", "build", "infra" ],
       "properties": {
